@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tche.blog.mapper.UserMapper">
+  <select id="selectByAccount" resultType="com.tche.blog.model.UserEntity">
+    SELECT
+      id, username, email, password, avatar_url, last_avatar_object_key,
+      nickname, mobile, bio, github, twitter, website, created_at, updated_at
+    FROM users
+    WHERE LOWER(username) = LOWER(#{account})
+       OR LOWER(email) = LOWER(#{account})
+    LIMIT 1
+  </select>
+
+  <select id="selectByUsername" resultType="com.tche.blog.model.UserEntity">
+    SELECT
+      id, username, email, password, avatar_url, last_avatar_object_key,
+      nickname, mobile, bio, github, twitter, website, created_at, updated_at
+    FROM users
+    WHERE LOWER(username) = LOWER(#{username})
+    LIMIT 1
+  </select>
+</mapper>

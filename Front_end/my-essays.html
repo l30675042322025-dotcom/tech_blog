@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>笔落客 - 我的随笔</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./my-essays.css" />
+    <link rel="stylesheet" href="./site-session.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="./index.html" aria-label="笔落客 首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M8.5 8 5 12l3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="m15.5 8 3.5 4-3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="m13.5 6-3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span class="brand-text">笔落客</span>
+        </a>
+
+        <nav class="site-nav" aria-label="主导航">
+          <svg class="nav-road-svg" viewBox="0 0 600 50" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="navRoadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#e8edf5"/>
+                <stop offset="50%" stop-color="#dde4ee"/>
+                <stop offset="100%" stop-color="#e8edf5"/>
+              </linearGradient>
+            </defs>
+            <path class="nav-road-path" d="M0 35 Q 60 15, 120 35 Q 180 55, 240 35 Q 300 15, 360 35 Q 420 55, 480 35 Q 540 15, 600 35" fill="none" stroke="url(#navRoadGradient)" stroke-width="16" stroke-linecap="round"/>
+            <path class="nav-road-line" d="M0 35 Q 60 15, 120 35 Q 180 55, 240 35 Q 300 15, 360 35 Q 420 55, 480 35 Q 540 15, 600 35" fill="none" stroke="#b8c5d6" stroke-width="2" stroke-dasharray="6 6" stroke-linecap="round"/>
+          </svg>
+          
+          <a class="nav-item" href="./index.html" data-nav="0">首页</a>
+          <a class="nav-item" href="./category.html" data-nav="1">分类</a>
+          <a class="nav-item" href="./about-author.html" data-nav="2">关于作者</a>
+          <a class="nav-item nav-admin-link" href="./my-articles.html" data-nav="3" hidden>我的文章</a>
+          <a class="nav-item nav-admin-essay-link active" href="./my-essays.html" data-nav="4">我的随笔</a>
+          
+          <div class="nav-road-car" id="navRoadCar">
+            <img src="https://cdn-icons-png.flaticon.com/512/3774/3774278.png" alt="小汽车" />
+          </div>
+        </nav>
+
+        <div class="auth-actions" data-enable-admin-publish="true">
+          <a class="link-login" href="./auth.html?tab=login">登录</a>
+          <a class="btn-register" href="./auth.html?tab=register">注册</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="my-essays-page">
+      <div class="container">
+        <section class="page-header">
+          <h1>我的随笔</h1>
+        </section>
+
+        <section class="toolbar">
+          <a class="btn-new-essay" href="./essay-edit.html">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            新建随笔
+          </a>
+        </section>
+
+        <section class="essays-list" id="essays-list" aria-label="随笔列表">
+          <div class="loading-state" id="loading-state">
+            <div class="spinner"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand-block">
+          <a class="brand brand-footer" href="#" aria-label="笔落客 底部品牌">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M8.5 8 5 12l3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="m15.5 8 3.5 4-3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="m13.5 6-3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="brand-text">笔落客</span>
+          </a>
+        </div>
+
+        <div class="subscribe-col">
+          <h4>订阅</h4>
+          <p>订阅我们的周刊，获取最新技术资讯</p>
+          <form class="subscribe-form" action="#">
+            <input type="email" placeholder="输入您的邮箱" aria-label="邮箱地址" />
+            <button type="submit">订阅</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">© 2026 笔落客. 保留所有权利</div>
+    </footer>
+
+    <div class="toast-container" id="toast-container"></div>
+
+    <div class="delete-confirm-dialog" id="delete-confirm-dialog" hidden>
+      <div class="dialog-overlay"></div>
+      <div class="dialog-content">
+        <h3>确认删除</h3>
+        <p>确定要删除这篇随笔吗？此操作不可恢复。</p>
+        <div class="dialog-actions">
+          <button type="button" class="btn-cancel" id="dialog-cancel">取消</button>
+          <button type="button" class="btn-confirm-delete" id="dialog-confirm">删除</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./aliyun-storage.js"></script>
+    <script src="./site-api.js"></script>
+    <script src="./site-session.js"></script>
+    <script src="./nav-road-car.js"></script>
+    <script type="module" src="./my-essays.js"></script>
+  </body>
+</html>

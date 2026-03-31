@@ -1,0 +1,736 @@
+:root {
+  --page-bg: #f4f6fb;
+  --card-bg: #ffffff;
+  --text-main: #1f2f49;
+  --text-sub: #74839a;
+  --line: #dce4ef;
+  --line-strong: #cfd9e7;
+  --brand-blue: #3d7ff6;
+  --brand-green: #36d29e;
+  --success: #129a65;
+  --navy-deep: #081736;
+  --navy-mid: #0c2146;
+  --decoration-bg: linear-gradient(180deg, var(--navy-mid) 0%, var(--navy-deep) 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  color: var(--text-main);
+  background: var(--page-bg);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.auth-page {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+
+.auth-shell {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 55% 45%;
+}
+
+/* 装饰区域 */
+.auth-decoration {
+  position: relative;
+  background: var(--decoration-bg);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 56px;
+  min-height: 100vh;
+  overflow: hidden;
+  align-items: center;
+}
+
+.decoration-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Manrope", "Noto Sans SC", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.brand-sparkle {
+  width: 24px;
+  height: 24px;
+  color: var(--brand-green);
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.7; transform: scale(1.1) rotate(180deg); }
+}
+
+.brand-text {
+  color: #ffffff;
+}
+
+/* 玩偶容器 */
+.puppets-container {
+  position: relative;
+  flex: 1;
+  width: 550px;
+  height: 400px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* 玩偶基础样式 */
+.puppet {
+  position: absolute;
+  bottom: 0;
+  transition: transform 0.7s ease-in-out, height 0.7s ease-in-out;
+  transform-origin: bottom center;
+}
+
+.puppet-body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.puppet-eyes {
+  position: absolute;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+  transition: left 0.7s ease-in-out, top 0.7s ease-in-out;
+}
+
+/* 橙色玩偶 (左下，半圆) */
+.puppet-orange {
+  left: 0;
+  width: 240px;
+  height: 200px;
+  z-index: 3;
+}
+
+.puppet-orange .puppet-body {
+  background-color: #FF9B6B;
+  border-radius: 120px 120px 0 0;
+  transition: transform 0.7s ease-in-out;
+}
+
+.puppet-orange .puppet-eyes {
+  top: 90px;
+  left: 82px;
+  gap: 32px;
+}
+
+.puppet-orange .eye {
+  width: 16px;
+  height: 16px;
+  background: transparent;
+  border-radius: 50%;
+  position: relative;
+  overflow: visible;
+}
+
+.puppet-orange .eye-pupil {
+  width: 10px;
+  height: 10px;
+  background: #2D2D2D;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out, left 0.1s ease-out, top 0.1s ease-out;
+}
+
+/* 紫色玩偶 (中间高) */
+.puppet-purple {
+  left: 70px;
+  width: 180px;
+  height: 400px;
+  z-index: 1;
+}
+
+.puppet-purple .puppet-body {
+  background-color: #6C3FF5;
+  border-radius: 10px 10px 0 0;
+  transition: transform 0.7s ease-in-out, height 0.7s ease-in-out;
+}
+
+.puppet-purple .puppet-eyes {
+  top: 40px;
+  left: 45px;
+  gap: 32px;
+  z-index: 2;
+  transition: transform 0.3s ease, z-index 0.3s ease;
+}
+
+.puppet-purple .eye-large {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: visible;
+}
+
+.puppet-purple .eye-sclera {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.puppet-purple .eye-pupil {
+  width: 9px;
+  height: 9px;
+  background: #2D2D2D;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+}
+
+/* 深灰玩偶 (中间右) */
+.puppet-grey {
+  left: 240px;
+  width: 120px;
+  height: 310px;
+  z-index: 2;
+}
+
+.puppet-grey .puppet-body {
+  background-color: #2D2D2D;
+  border-radius: 8px 8px 0 0;
+  transition: transform 0.7s ease-in-out;
+}
+
+.puppet-grey .puppet-eyes {
+  top: 32px;
+  left: 26px;
+  gap: 24px;
+  z-index: 3;
+}
+
+.puppet-grey .eye-large {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  overflow: visible;
+}
+
+.puppet-grey .eye-sclera {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.puppet-grey .eye-pupil {
+  width: 8px;
+  height: 8px;
+  background: #2D2D2D;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+}
+
+/* 黄色玩偶 (右下) */
+.puppet-yellow {
+  left: 310px;
+  width: 140px;
+  height: 230px;
+  z-index: 10;  /* 确保在最前面 */
+}
+
+.puppet-yellow .puppet-body {
+  background-color: #E8D754;
+  border-radius: 70px 70px 0 0;
+  transition: transform 0.7s ease-in-out;
+}
+
+.puppet-yellow .puppet-eyes {
+  top: 40px;
+  left: 52px;
+  gap: 24px;
+  z-index: 15;
+  position: absolute;
+}
+
+.puppet-yellow .eye {
+  width: 16px;
+  height: 16px;
+  background: transparent;
+  border-radius: 50%;
+  position: relative;
+  overflow: visible;
+}
+
+.puppet-yellow .eye-pupil {
+  width: 10px;
+  height: 10px;
+  background: #2D2D2D;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+  z-index: 16;
+}
+
+.puppet-yellow .puppet-mouth {
+  position: absolute;
+  width: 20px;
+  height: 4px;
+  background: #2D2D2D;
+  border-radius: 2px;
+  top: 88px;
+  left: 40px;
+  transition: left 0.2s ease-out, top 0.2s ease-out;
+  z-index: 15;
+}
+
+/* 装饰区域底部链接 */
+.decoration-footer {
+  display: flex;
+  gap: 24px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* 右侧表单区域 */
+.auth-card {
+  position: relative;
+  width: 100%;
+  background: var(--card-bg);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  max-height: 100vh;
+  order: 1;
+}
+
+.auth-decoration {
+  order: 2;
+}
+
+/* 返回按钮 */
+.back-btn {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--page-bg);
+  border: 1px solid var(--line-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-sub);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.back-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.back-btn:hover {
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
+  color: #ffffff;
+  transform: translateX(-2px);
+}
+
+.auth-card-inner {
+  width: 100%;
+  max-width: 520px;
+  padding: 48px 64px;
+  margin: 0 auto;
+}
+
+.guest-mode-btn {
+  margin-top: 12px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid var(--line-strong);
+  color: #51627b;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 700;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.guest-mode-btn:hover {
+  color: #2f74f8;
+  border-color: #9cb6ed;
+  background: #f6f9ff;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: #8999b1;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 4px 0 8px;
+  transition: color 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: #4a7ef2;
+}
+
+.tab-btn.active {
+  color: var(--brand-blue);
+}
+
+.auth-panel {
+  display: none;
+}
+
+.auth-panel.active {
+  display: block;
+  animation: panelIn 0.25s ease;
+}
+
+.auth-panel h1 {
+  margin: 0;
+  font-family: "Manrope", "Noto Sans SC", sans-serif;
+  font-size: 34px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.panel-subtitle {
+  margin: 6px 0 18px;
+  color: var(--text-sub);
+  font-size: 16px;
+}
+
+.auth-form {
+  display: grid;
+  gap: 12px;
+}
+
+.auth-form label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #3c4d68;
+}
+
+.label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.minor-link {
+  font-size: 14px;
+  color: #3f7af6;
+}
+
+.field-wrap {
+  position: relative;
+}
+
+.field-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #98a6bc;
+  display: inline-grid;
+  place-items: center;
+}
+
+.field-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.field-wrap input {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid var(--line-strong);
+  outline: none;
+  padding: 0 42px 0 46px;
+  font-size: 16px;
+  color: #2b3c57;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field-wrap input::placeholder {
+  color: #a0adbf;
+}
+
+.field-wrap input:focus {
+  border-color: #6b96f5;
+  box-shadow: 0 0 0 3px rgba(61, 127, 246, 0.12);
+}
+
+.captcha-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 120px;
+  gap: 10px;
+  align-items: center;
+}
+
+.captcha-input-wrap input {
+  padding: 0 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.captcha-refresh-btn {
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.captcha-refresh-btn:hover {
+  border-color: #8fb0ee;
+  transform: translateY(-1px);
+}
+
+.captcha-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.email-code-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 132px;
+  gap: 10px;
+  align-items: center;
+}
+
+.email-code-input-wrap input {
+  padding: 0 12px;
+  letter-spacing: 2px;
+}
+
+.email-code-btn {
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: #3f516c;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.email-code-btn:hover:not(:disabled) {
+  color: #2f74f8;
+  border-color: #9cb6ed;
+  transform: translateY(-1px);
+}
+
+.email-code-btn:disabled {
+  color: #8a96aa;
+  background: #f5f7fb;
+  cursor: not-allowed;
+}
+
+.field-toggle {
+  position: absolute;
+  right: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #95a6bc;
+  display: inline-grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.field-toggle svg {
+  width: 19px;
+  height: 19px;
+}
+
+.check-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #667891;
+  margin-top: 4px;
+}
+
+.check-row input {
+  width: 16px;
+  height: 16px;
+  accent-color: #3e7ff6;
+}
+
+.primary-btn {
+  border: 0;
+  border-radius: 10px;
+  height: 48px;
+  margin-top: 2px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--brand-blue) 0%, var(--brand-green) 100%);
+  box-shadow: 0 12px 20px rgba(61, 127, 246, 0.25);
+  cursor: pointer;
+}
+
+.feedback {
+  min-height: 22px;
+  margin: 8px 0 4px;
+  font-size: 13px;
+  color: #ce4b4b;
+}
+
+.feedback.success {
+  color: var(--success);
+}
+
+.switch-row {
+  margin: 14px 0 2px;
+  text-align: center;
+  color: #79889f;
+  font-size: 14px;
+}
+
+.text-link {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #2f74f8;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .auth-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-card {
+    order: 1;
+  }
+
+  .auth-decoration {
+    order: 2;
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .auth-card-inner {
+    padding: 20px 16px;
+  }
+
+  .auth-panel h1 {
+    font-size: 28px;
+  }
+
+  .tab-btn {
+    font-size: 15px;
+  }
+
+  .field-wrap input {
+    height: 46px;
+    font-size: 15px;
+  }
+
+  .captcha-refresh-btn {
+    height: 46px;
+  }
+
+  .email-code-btn {
+    height: 46px;
+  }
+
+  .primary-btn {
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .guest-mode-btn {
+    height: 42px;
+    font-size: 14px;
+  }
+}

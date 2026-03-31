@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tche.blog.mapper.ArticleMapper">
+  <select id="selectAllOrderByCreatedAtDesc" resultType="com.tche.blog.model.ArticleEntity">
+    SELECT
+      id, title, summary, summary_ai_generated, content, category, status, cover_image, author_id,
+      author_name, views, likes, created_at, updated_at
+    FROM articles
+    ORDER BY created_at DESC
+  </select>
+
+  <select id="selectByAuthorNameOrderByCreatedAtDesc" resultType="com.tche.blog.model.ArticleEntity">
+    SELECT
+      id, title, summary, summary_ai_generated, content, category, status, cover_image, author_id,
+      author_name, views, likes, created_at, updated_at
+    FROM articles
+    WHERE LOWER(author_name) = LOWER(#{authorName})
+    ORDER BY created_at DESC
+  </select>
+</mapper>

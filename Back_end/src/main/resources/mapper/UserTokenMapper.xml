@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tche.blog.mapper.UserTokenMapper">
+  <select id="selectValidToken" resultType="com.tche.blog.model.UserTokenEntity">
+    SELECT token, user_id, issued_at, expires_at, last_seen_at
+    FROM user_tokens
+    WHERE token = #{token}
+      AND (expires_at IS NULL OR expires_at > NOW())
+    LIMIT 1
+  </select>
+</mapper>

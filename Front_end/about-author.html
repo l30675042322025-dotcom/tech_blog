@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>笔落客 - 关于作者</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+
+    <link rel="stylesheet" href="./about-author.css" />
+    <link rel="stylesheet" href="./site-session.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="./index.html" aria-label="笔落客 首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M8.5 8 5 12l3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="m15.5 8 3.5 4-3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="m13.5 6-3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span class="brand-text">笔落客</span>
+        </a>
+
+        <nav class="site-nav" aria-label="主导航">
+          <svg class="nav-road-svg" viewBox="0 0 600 50" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="navRoadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#e8edf5"/>
+                <stop offset="50%" stop-color="#dde4ee"/>
+                <stop offset="100%" stop-color="#e8edf5"/>
+              </linearGradient>
+            </defs>
+            <path class="nav-road-path" d="M0 35 Q 60 15, 120 35 Q 180 55, 240 35 Q 300 15, 360 35 Q 420 55, 480 35 Q 540 15, 600 35" fill="none" stroke="url(#navRoadGradient)" stroke-width="16" stroke-linecap="round"/>
+            <path class="nav-road-line" d="M0 35 Q 60 15, 120 35 Q 180 55, 240 35 Q 300 15, 360 35 Q 420 55, 480 35 Q 540 15, 600 35" fill="none" stroke="#b8c5d6" stroke-width="2" stroke-dasharray="6 6" stroke-linecap="round"/>
+          </svg>
+          
+          <a class="nav-item" href="./index.html" data-nav="0">首页</a>
+          <a class="nav-item" href="./category.html" data-nav="1">分类</a>
+          <a class="nav-item active" href="./about-author.html" data-nav="2">关于作者</a>
+          <a class="nav-item nav-admin-link" href="./my-articles.html" data-nav="3" hidden>我的文章</a>
+          <a class="nav-item nav-admin-essay-link" href="./my-essays.html" data-nav="4" hidden>我的随笔</a>
+          
+          <div class="nav-road-car" id="navRoadCar">
+            <img src="https://cdn-icons-png.flaticon.com/512/3774/3774278.png" alt="小汽车" />
+          </div>
+        </nav>
+
+        <div class="auth-actions" data-enable-admin-publish="true">
+          <a class="link-login" href="./auth.html?tab=login">登录</a>
+          <a class="btn-register" href="./auth.html?tab=register">注册</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="about-page">
+      <div class="container">
+        <h1 class="page-title">关于作者</h1>
+
+        <div class="about-layout">
+          <aside class="panel left-sidebar" aria-label="作者文章速览">
+            <h2>作者文章</h2>
+            <div id="author-article-list" class="author-article-list" aria-live="polite"></div>
+          </aside>
+
+          <div class="content-stack">
+            <section class="panel hero-card" aria-label="作者信息">
+              <img
+                class="hero-cover"
+                src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1400&q=80"
+                alt="作者封面"
+              />
+              <div class="hero-content">
+                <img
+                  class="author-avatar"
+                  id="author-avatar"
+                  src="https://images.unsplash.com/photo-1528892952291-009c663ce843?auto=format&fit=crop&w=260&q=80"
+                  alt="作者头像"
+                />
+                <h2 id="author-name">Admin</h2>
+                <p id="author-bio">站长信息加载中...</p>
+                <div class="social-row" aria-label="社交平台" id="author-social-row">
+                  <a id="author-github-link" href="#" aria-label="GitHub" target="_blank" rel="noopener noreferrer" hidden>G</a>
+                  <a id="author-twitter-link" href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer" hidden>T</a>
+                  <a id="author-website-link" href="#" aria-label="Website" target="_blank" rel="noopener noreferrer" hidden>W</a>
+                </div>
+              </div>
+            </section>
+
+            <div class="grid-two">
+              <section class="panel info-panel" aria-label="工作经历">
+                <h3>工作经历</h3>
+                <div class="timeline-list">
+                  <article>
+                    <header>
+                      <strong>后端Java实习生</strong>
+                      <span>2025-12 - 2026-03</span>
+                    </header>
+                    <p>负责公司核心产品前端架构设计与实现，主导多个大型项目的前端技术选型与开发。</p>
+                  </article>
+                </div>
+              </section>
+
+              <section class="panel info-panel" aria-label="教育背景">
+                <h3>教育背景</h3>
+                <div class="timeline-list">
+                  <article>
+                    <header>
+                      <strong>软件工程学士</strong>
+                      <span>2022-2026</span>
+                    </header>
+                    <p>宜宾学院，主修软件工程与数据结构算法。</p>
+                  </article>
+                </div>
+              </section>
+            </div>
+
+            <section class="panel skill-panel" aria-label="技术专长">
+              <h3>技术专长</h3>
+              <div class="skill-tags">
+                <span>Java</span>
+                <span>MySQL</span>
+                <span>Node.js</span>
+                <span>Python</span>
+                <span>Git/GitHub</span>
+                <span>Docker</span>
+              </div>
+
+              <div class="bars">
+                <div class="bar-item"><label>后端开发</label><b style="--w: 85%"></b><small>85%</small></div>
+                <div class="bar-item"><label>数据库设计</label><b style="--w: 80%"></b><small>80%</small></div>
+              </div>
+            </section>
+
+            <div class="grid-two">
+              <section class="panel compact-panel" aria-label="开源项目">
+                <h3>开源项目</h3>
+                <article class="mini-row">
+                  <div class="icon">&lt;/&gt;</div>
+                  <div>
+                    <h4>React组件库</h4>
+                    <p>轻量级 UI 组件库，服务多个项目。</p>
+                  </div>
+                </article>
+                <article class="mini-row">
+                  <div class="icon">DB</div>
+                  <div>
+                    <h4>数据可视化工具</h4>
+                    <p>支持 15+ 图表类型，适用于分析场景。</p>
+                  </div>
+                </article>
+                <article class="mini-row">
+                  <div class="icon">API</div>
+                  <div>
+                    <h4>Node.js API 框架</h4>
+                    <p>高性能 RESTful API 开发框架。</p>
+                  </div>
+                </article>
+              </section>
+
+              <section class="panel compact-panel" aria-label="成就与荣誉">
+                <h3>成就与荣誉</h3>
+                <article class="award-row">
+                  <strong>年度技术影响力奖</strong>
+                  <span>2023年</span>
+                </article>
+                <article class="award-row">
+                  <strong>技术畅销书作者</strong>
+                  <span>2022年</span>
+                </article>
+                <article class="award-row">
+                  <strong>开源贡献者奖</strong>
+                  <span>2021年</span>
+                </article>
+                <article class="award-row">
+                  <strong>技术大会演讲嘉宾</strong>
+                  <span>2019-2023年</span>
+                </article>
+              </section>
+            </div>
+
+            <section class="panel contact-panel" aria-label="联系我">
+              <h3>联系我</h3>
+              <div class="contact-grid">
+                <div>
+                  <strong>电子邮件</strong>
+                  <span>469314046@qq.com</span>
+                </div>
+                <div>
+                  <strong>微信</strong>
+                  <span>sm0425j</span>
+                </div>
+                <div>
+                  <strong>所在地</strong>
+                  <span>四川省宜宾市</span>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand-block">
+          <a class="brand brand-footer" href="./index.html" aria-label="笔落客 底部品牌">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M8.5 8 5 12l3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="m15.5 8 3.5 4-3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="m13.5 6-3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="brand-text">笔落客</span>
+          </a>
+        </div>
+
+        <div class="subscribe-col">
+          <h4>订阅更新</h4>
+          <p>订阅技术周刊，获取最新文章与学习资源</p>
+          <form class="subscribe-form" action="#">
+            <input type="email" placeholder="您的邮箱地址" aria-label="邮箱地址" />
+            <button type="submit">订阅</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">© 2026 笔落客. 保留所有权利</div>
+    </footer>
+    <script src="./aliyun-storage.js"></script>
+    <script src="./site-api.js"></script>
+    <script src="./site-session.js"></script>
+    <script src="./nav-road-car.js"></script>
+    <script type="module" src="./about-author.js"></script>
+  </body>
+</html>
+
+

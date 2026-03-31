@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tche.blog.mapper.CategoryMapper">
+  <select id="selectCategorySummaries" resultType="com.tche.blog.dto.category.CategorySummaryResponse">
+    SELECT
+      c.id AS id,
+      c.name AS name,
+      COUNT(a.id) AS articleCount
+    FROM categories c
+    LEFT JOIN articles a ON a.category = c.name AND a.status = 'published'
+    <where>
+      <if test="keyword != null and keyword != ''">
+        c.name LIKE CONCAT('%', #{keyword}, '%')
+      </if>
+    </where>
+    GROUP BY c.id, c.name
+    ORDER BY articleCount DESC, c.name ASC
+  </select>
+</mapper>

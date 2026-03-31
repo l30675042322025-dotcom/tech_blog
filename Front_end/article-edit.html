@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>笔落客 - 编辑文章</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./article-edit.css" />
+    <link rel="stylesheet" href="./site-session.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="./index.html" aria-label="笔落客 首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M8.5 8 5 12l3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="m15.5 8 3.5 4-3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="m13.5 6-3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span class="brand-text">笔落客</span>
+        </a>
+
+        <nav class="site-nav" aria-label="主导航">
+          <svg class="nav-road-svg" viewBox="0 0 600 50" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="navRoadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#e8edf5"/>
+                <stop offset="50%" stop-color="#dde4ee"/>
+                <stop offset="100%" stop-color="#e8edf5"/>
+              </linearGradient>
+            </defs>
+            <path class="nav-road-path" d="M0 35 Q 60 15, 120 35 Q 180 55, 240 35 Q 300 15, 360 35 Q 420 55, 480 35 Q 540 15, 600 35" fill="none" stroke="url(#navRoadGradient)" stroke-width="16" stroke-linecap="round"/>
+            <path class="nav-road-line" d="M0 35 Q 60 15, 120 35 Q 180 55, 240 35 Q 300 15, 360 35 Q 420 55, 480 35 Q 540 15, 600 35" fill="none" stroke="#b8c5d6" stroke-width="2" stroke-dasharray="6 6" stroke-linecap="round"/>
+          </svg>
+          
+          <a class="nav-item" href="./index.html" data-nav="0">首页</a>
+          <a class="nav-item" href="./category.html" data-nav="1">分类</a>
+          <a class="nav-item" href="./about-author.html" data-nav="2">关于作者</a>
+          <a class="nav-item nav-admin-link" href="./my-articles.html" data-nav="3" hidden>我的文章</a>
+          <a class="nav-item nav-admin-essay-link" href="./my-essays.html" data-nav="4" hidden>我的随笔</a>
+          
+          <div class="nav-road-car" id="navRoadCar">
+            <img src="https://cdn-icons-png.flaticon.com/512/3774/3774278.png" alt="小汽车" />
+          </div>
+        </nav>
+
+        <div class="header-actions" aria-label="页头操作">
+          <button class="icon-btn" type="button" aria-label="通知">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7 10a5 5 0 1 1 10 0v3.2c0 .7.3 1.3.7 1.8l1 1.1H5.3l1-1.1c.4-.5.7-1.1.7-1.8V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M10 18a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+          </button>
+          <a class="header-avatar" href="./profile.html" aria-label="个人中心">
+            <img src="https://images.unsplash.com/photo-1528892952291-009c663ce843?auto=format&fit=crop&w=120&q=80" alt="用户头像" />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="editor-page">
+      <div class="container">
+        <section class="editor-top">
+          <h1>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="m4 20 4.2-.8L19 8.4 15.6 5 4.8 15.8 4 20Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+              <path d="m13.8 6.8 3.4 3.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+            <span id="editor-mode-text">发布文章</span>
+          </h1>
+
+          <div class="editor-actions">
+            <button id="go-back-btn" type="button" class="ghost-btn">返回</button>
+            <button id="save-draft-btn" type="button" class="ghost-btn">保存草稿</button>
+            <button id="preview-btn" type="button" class="ghost-btn">预览</button>
+            <button type="button" class="primary-btn">发布文章</button>
+          </div>
+        </section>
+
+        <section class="panel title-panel" aria-label="标题设置">
+          <label for="article-title">文章标题</label>
+          <div class="title-input-wrapper">
+            <input id="article-title" type="text" value="" placeholder="请输入文章标题" />
+            <div id="draft-suggestions" class="draft-suggestions" hidden></div>
+          </div>
+          <p>清晰的标题有助于读者快速理解主题。</p>
+        </section>
+
+        <section class="editor-layout">
+          <div class="left-column">
+            <section class="panel editor-panel" aria-label="文章编辑器">
+              <div class="toolbar" role="toolbar" aria-label="编辑工具栏">
+                <button type="button" data-toggle="bold">B</button>
+                <button type="button" data-toggle="italic">I</button>
+                <button type="button" data-toggle="underline">U</button>
+                <button type="button" data-toggle="strike">S</button>
+                <span class="sep" aria-hidden="true"></span>
+                <button type="button" data-toggle="left">左</button>
+                <button type="button" data-toggle="center">中</button>
+                <button type="button" data-toggle="right">右</button>
+                <span class="sep" aria-hidden="true"></span>
+                <button type="button" data-toggle="link">链接</button>
+                <button type="button" data-toggle="image">图片</button>
+                <button type="button" data-toggle="table">表格</button>
+                <button type="button" data-toggle="table-add-row">+行</button>
+                <button type="button" data-toggle="table-add-col">+列</button>
+                <button type="button" data-toggle="code">代码</button>
+              </div>
+
+              <div class="editor-canvas" contenteditable="true" spellcheck="false" aria-label="可编辑文章内容">
+                <p><br /></p>
+              </div>
+
+              <label class="upload-box" for="article-image-input">
+                <input id="article-image-input" type="file" accept="image/png,image/jpeg,image/gif" hidden />
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8" />
+                  <path d="m8 14 2.5-2.5L14 15l2.5-2.5L19 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="8.5" cy="9" r="1" fill="currentColor" />
+                </svg>
+                <strong id="image-upload-text">点击或拖拽图片到此处</strong>
+                <span>支持 JPG、PNG、GIF（最大 10MB）</span>
+              </label>
+            </section>
+          </div>
+
+          <aside class="right-column">
+            <section class="panel side-panel" aria-label="文章设置">
+              <h2>文章设置</h2>
+
+              <div class="field">
+                <span>封面图</span>
+                <label class="cover-uploader" for="cover-input">
+                  <input id="cover-input" type="file" accept="image/png,image/jpeg" hidden />
+                  <img id="cover-preview" class="cover-preview" alt="封面预览" hidden />
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8" />
+                    <path d="m8 14 2.5-2.5L14 15l2.5-2.5L19 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <strong id="cover-upload-text">上传封面图</strong>
+                  <small>建议尺寸：1200 x 630 像素</small>
+                </label>
+              </div>
+
+              <label class="field" for="summary-input">
+                <span>摘要</span>
+                <textarea id="summary-input" maxlength="200"></textarea>
+                <small class="field-tip">如果留空，保存或发布时将自动使用 AI 生成摘要。</small>
+                <em id="summary-count">0/200 字</em>
+              </label>
+
+              <label class="field" for="category-input">
+                <span>分类</span>
+                <select id="category-input">
+                  <option value="">请选择分类</option>
+                </select>
+              </label>
+
+              <div class="field">
+                <span>标签</span>
+                <div class="tag-input-wrap">
+                  <input id="tag-input" type="text" placeholder="输入标签后回车添加" />
+                </div>
+                <div class="tag-list" id="tag-list"></div>
+              </div>
+            </section>
+
+            <section class="panel side-panel" aria-label="发布设置">
+              <h2>发布设置</h2>
+
+              <label class="field" for="publish-time">
+                <span>发布时间</span>
+                <input id="publish-time" type="datetime-local" min="" />
+                <small class="field-tip">选择未来的时间进行定时发布，留空则立即发布</small>
+              </label>
+
+              <label class="field" for="seo-input">
+                <span>SEO 标题</span>
+                <textarea id="seo-input" maxlength="60"></textarea>
+                <em id="seo-count">0/60 字</em>
+              </label>
+            </section>
+          </aside>
+        </section>
+      </div>
+    </main>
+
+    <div id="editor-dialog" class="editor-dialog" hidden>
+      <div class="editor-dialog-backdrop" data-role="dialog-close"></div>
+      <div class="editor-dialog-panel" role="dialog" aria-modal="true" aria-labelledby="editor-dialog-title">
+        <h3 id="editor-dialog-title" class="editor-dialog-title">提示</h3>
+        <p id="editor-dialog-message" class="editor-dialog-message"></p>
+        <div class="editor-dialog-actions">
+          <button id="editor-dialog-cancel" type="button" class="ghost-btn">取消</button>
+          <button id="editor-dialog-confirm" type="button" class="primary-btn">确认</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="image-size-dialog" class="editor-dialog" hidden>
+      <div class="editor-dialog-backdrop" data-role="image-dialog-close"></div>
+      <div class="editor-dialog-panel image-size-panel" role="dialog" aria-modal="true" aria-labelledby="image-dialog-title">
+        <h3 id="image-dialog-title" class="editor-dialog-title">调整图片尺寸</h3>
+        <div class="image-size-form">
+          <div class="image-size-row">
+            <label for="image-width-input">宽度(px)</label>
+            <input id="image-width-input" type="number" min="50" max="2000" placeholder="自动" />
+          </div>
+          <div class="image-size-row">
+            <label for="image-height-input">高度(px)</label>
+            <input id="image-height-input" type="number" min="50" max="2000" placeholder="自动" />
+          </div>
+          <div class="image-size-row">
+            <label>
+              <input id="image-ratio-lock" type="checkbox" checked />
+              保持宽高比
+            </label>
+          </div>
+          <div class="image-preview-wrap">
+            <img id="image-size-preview" src="" alt="预览" />
+          </div>
+        </div>
+        <div class="editor-dialog-actions">
+          <button id="image-dialog-cancel" type="button" class="ghost-btn">取消</button>
+          <button id="image-dialog-reset" type="button" class="ghost-btn">重置</button>
+          <button id="image-dialog-confirm" type="button" class="primary-btn">确认</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="editor-preview-modal" class="editor-preview-modal" hidden>
+      <div class="editor-preview-backdrop" data-role="preview-close"></div>
+      <section class="editor-preview-panel" role="dialog" aria-modal="true" aria-labelledby="preview-title-text">
+        <header class="editor-preview-header">
+          <h3 id="preview-title-text">文章预览</h3>
+          <button id="preview-close-btn" type="button" class="ghost-btn">关闭</button>
+        </header>
+        <article class="editor-preview-content">
+          <h1 id="preview-article-title"></h1>
+          <p id="preview-article-summary" class="preview-summary"></p>
+          <div id="preview-article-meta" class="preview-meta"></div>
+          <div id="preview-article-body" class="preview-body"></div>
+        </article>
+      </section>
+    </div>
+
+    <div id="editor-toast" class="editor-toast" hidden></div>
+
+    <div id="editor-context-menu" class="editor-context-menu" hidden>
+      <button type="button" class="context-menu-item" data-action="upload-image">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8" />
+          <path d="m8 14 2.5-2.5L14 15l2.5-2.5L19 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        上传图片
+      </button>
+    </div>
+
+    <script src="./aliyun-storage.js"></script>
+    <script src="./site-api.js"></script>
+    <script src="./site-session.js"></script>
+    <script src="./nav-road-car.js"></script>
+    <script type="module" src="./article-edit.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>笔落客 - 文章分类</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./category.css" />
+    <link rel="stylesheet" href="./site-session.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="./index.html" aria-label="笔落客首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M8.5 8 5 12l3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="m15.5 8 3.5 4-3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="m13.5 6-3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span class="brand-text">笔落客</span>
+        </a>
+
+        <nav class="site-nav" aria-label="主导航">
+          <!-- 道路背景 -->
+          <svg class="nav-road-svg" viewBox="0 0 600 50" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="navRoadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#e8edf5"/>
+                <stop offset="50%" stop-color="#dde4ee"/>
+                <stop offset="100%" stop-color="#e8edf5"/>
+              </linearGradient>
+            </defs>
+            <path class="nav-road-path" d="M0 35 
+              Q 60 15, 120 35
+              Q 180 55, 240 35
+              Q 300 15, 360 35
+              Q 420 55, 480 35
+              Q 540 15, 600 35"
+              fill="none" stroke="url(#navRoadGradient)" stroke-width="16" stroke-linecap="round"/>
+            <path class="nav-road-line" d="M0 35 
+              Q 60 15, 120 35
+              Q 180 55, 240 35
+              Q 300 15, 360 35
+              Q 420 55, 480 35
+              Q 540 15, 600 35"
+              fill="none" stroke="#b8c5d6" stroke-width="2" stroke-dasharray="6 6" stroke-linecap="round"/>
+          </svg>
+          
+          <a class="nav-item" href="./index.html" data-nav="0">首页</a>
+          <a class="nav-item active" href="./category.html" data-nav="1">分类</a>
+          <a class="nav-item" href="./about-author.html" data-nav="2">关于作者</a>
+          <a class="nav-item nav-admin-link" href="./my-articles.html" data-nav="3" hidden>我的文章</a>
+          <a class="nav-item nav-admin-essay-link" href="./my-essays.html" data-nav="4" hidden>我的随笔</a>
+          
+          <div class="nav-road-car" id="navRoadCar">
+            <img src="https://cdn-icons-png.flaticon.com/512/3774/3774278.png" alt="小汽车" />
+          </div>
+        </nav>
+
+        <div class="auth-actions" data-enable-admin-publish="true">
+          <a class="link-login" href="./auth.html?tab=login">登录</a>
+          <a class="btn-register" href="./auth.html?tab=register">注册</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="category-page">
+      <div class="container">
+        <section class="page-head">
+          <div>
+            <h1>文章分类</h1>
+            <p>按分类筛选、搜索并批量管理文章</p>
+          </div>
+          <div class="page-actions">
+            <button id="create-category-btn" type="button" class="primary-btn">新建分类</button>
+          </div>
+        </section>
+
+        <div class="category-layout">
+          <aside class="panel side-panel" aria-label="分类侧边栏">
+            <label class="search-box" for="category-search">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="1.8" />
+                <path d="m20 20-4.2-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+              <input id="category-search" type="text" placeholder="搜索分类..." />
+            </label>
+
+            <nav id="category-menu" class="category-menu" aria-label="分类列表"></nav>
+          </aside>
+
+          <section class="content-area">
+            <div class="panel content-top">
+              <div class="content-title">
+                <h2 id="category-title">全部文章</h2>
+                <p id="category-count">共 0 篇文章</p>
+              </div>
+
+              <div class="content-tools">
+                <select id="article-sort" aria-label="排序方式">
+                  <option value="latest">最新发布</option>
+                  <option value="views">最多阅读</option>
+                  <option value="likes">最多点赞</option>
+                </select>
+                <select id="article-status" aria-label="状态筛选">
+                  <option value="all">全部状态</option>
+                  <option value="published">已发布</option>
+                  <option value="draft">草稿</option>
+                </select>
+                <label class="search-box small" for="article-search">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="1.8" />
+                    <path d="m20 20-4.2-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                  </svg>
+                  <input id="article-search" type="text" placeholder="搜索文章..." />
+                </label>
+                <button id="batch-toggle-btn" type="button" class="ghost-btn">批量操作</button>
+                <button id="batch-delete-btn" type="button" class="ghost-btn is-hidden">批量删除</button>
+                <button id="batch-move-btn" type="button" class="primary-btn is-hidden">批量改分类</button>
+              </div>
+
+              <p id="batch-status" class="batch-status" hidden>已选择 0 篇文章</p>
+            </div>
+
+            <div id="article-grid" class="article-grid" aria-label="分类文章列表"></div>
+
+            <div id="pagination" class="pagination" aria-label="分页导航"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <div id="theme-dialog" class="theme-dialog" hidden>
+      <div class="theme-dialog-backdrop" data-role="dialog-close"></div>
+      <div class="theme-dialog-panel" role="dialog" aria-modal="true" aria-labelledby="theme-dialog-title">
+        <h3 id="theme-dialog-title" class="theme-dialog-title">提示</h3>
+        <p id="theme-dialog-message" class="theme-dialog-message"></p>
+        <div id="theme-dialog-input-wrap" class="theme-dialog-input-wrap" hidden>
+          <input id="theme-dialog-input" class="theme-dialog-input" type="text" />
+          <p id="theme-dialog-error" class="theme-dialog-error" hidden></p>
+        </div>
+        <div class="theme-dialog-actions">
+          <button id="theme-dialog-cancel" type="button" class="ghost-btn">取消</button>
+          <button id="theme-dialog-confirm" type="button" class="primary-btn">确定</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="theme-toast" class="theme-toast" hidden></div>
+
+    <script src="./aliyun-storage.js"></script>
+    <script src="./site-api.js"></script>
+    <script src="./site-session.js"></script>
+    <script type="module" src="./category-dynamic.js"></script>
+    <script type="module" src="./article-nav.js"></script>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand-block">
+          <a class="brand brand-footer" href="#" aria-label="笔落客 底部品牌">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M8.5 8 5 12l3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="m15.5 8 3.5 4-3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="m13.5 6-3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="brand-text">笔落客</span>
+          </a>
+        </div>
+
+        <div class="subscribe-col">
+          <h4>订阅</h4>
+          <p>订阅我们的周刊，获取最新技术资讯</p>
+          <form class="subscribe-form" action="#">
+            <input type="email" placeholder="输入您的邮箱" aria-label="邮箱地址" />
+            <button type="submit">订阅</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">© 2026 笔落客. 保留所有权利</div>
+    </footer>
+    <script src="./aliyun-storage.js"></script>
+    <script src="./site-api.js"></script>
+    <script src="./site-session.js"></script>
+    <script src="./nav-road-car.js"></script>
+    <script type="module" src="./category-dynamic.js"></script>
+  </body>
+</html>
+

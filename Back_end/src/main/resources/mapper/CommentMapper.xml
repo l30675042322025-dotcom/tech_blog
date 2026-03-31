@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tche.blog.mapper.CommentMapper">
+  <select id="selectByArticleId" resultType="com.tche.blog.model.CommentEntity">
+    SELECT
+      id, article_id, user_id, user_name, user_avatar_url, content, likes, created_at
+    FROM comments
+    WHERE article_id = #{articleId}
+    ORDER BY created_at DESC
+  </select>
+</mapper>

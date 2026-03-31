@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>笔落客 - 个人设置</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./profile.css" />
+    <link rel="stylesheet" href="./site-session.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="./index.html" aria-label="笔落客首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M8.5 8 5 12l3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="m15.5 8 3.5 4-3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="m13.5 6-3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span class="brand-text">笔落客</span>
+        </a>
+
+        <nav class="site-nav" aria-label="主导航">
+          <a href="./index.html">首页</a>
+          <a href="./category.html">分类</a>
+          <a href="./about-author.html">关于作者</a>
+          <a class="nav-admin-link" href="./my-articles.html" hidden>我的文章</a>
+          <a class="nav-admin-essay-link" href="./my-essays.html" hidden>我的随笔</a>
+        </nav>
+
+        <div class="header-actions" aria-label="用户操作">
+          <button class="icon-btn" type="button" aria-label="站内消息">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7 10a5 5 0 1 1 10 0v3.2c0 .7.3 1.3.7 1.8l1 1.1H5.3l1-1.1c.4-.5.7-1.1.7-1.8V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M10 18a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+          </button>
+          <button class="header-logout-btn" type="button" aria-label="退出登录">退出登录</button>
+          <a class="header-avatar" href="./profile.html" aria-label="个人中心">
+            <img src="https://images.unsplash.com/photo-1528892952291-009c663ce843?auto=format&fit=crop&w=120&q=80" alt="用户头像" />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="profile-page">
+      <div class="container">
+        <h1 class="page-title">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="1.8" />
+            <path d="M6 19a6 6 0 0 1 12 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+          个人设置
+        </h1>
+
+        <div class="profile-layout">
+          <aside class="panel sidebar-panel" aria-label="用户菜单">
+            <div class="sidebar-user">
+              <img
+                class="user-avatar"
+                src="https://images.unsplash.com/photo-1528892952291-009c663ce843?auto=format&fit=crop&w=240&q=80"
+                alt="用户头像"
+              />
+              <h2 data-profile-name>张小明</h2>
+              <p>前端开发工程师</p>
+            </div>
+
+            <nav class="sidebar-nav" aria-label="设置菜单">
+              <button class="menu-item active" type="button" data-menu="personal">
+                <span class="menu-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M6 19a6 6 0 0 1 12 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                  </svg>
+                </span>
+                个人信息
+              </button>
+              <button class="menu-item menu-admin-only" type="button" data-menu="security">
+                <span class="menu-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M8 10V8a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                  </svg>
+                </span>
+                账户安全
+              </button>
+              <button class="menu-item menu-admin-only" type="button" data-menu="articles">
+                <span class="menu-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M7 6h10M7 12h10M7 18h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                  </svg>
+                </span>
+                我的文章
+              </button>
+              <button class="menu-item menu-user-only" type="button" data-menu="likes">
+                <span class="menu-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 20s-7-4.2-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.8-7 10-7 10Z" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </span>
+                我的点赞
+              </button>
+              <button class="menu-item menu-user-only" type="button" data-menu="favorites">
+                <span class="menu-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="m12 18-4 2 .8-4.6L5.5 12l4.6-.7L12 7l1.9 4.3 4.6.7-3.3 3.4L16 20l-4-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                我的收藏
+              </button>
+              <button class="menu-item menu-user-only" type="button" data-menu="comments">
+                <span class="menu-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                我的评论
+              </button>
+              <button class="menu-item menu-admin-only" type="button" data-menu="notifications">
+                <span class="menu-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M7 8h10M7 12h10M7 16h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                    <circle cx="18" cy="16" r="2" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </span>
+                通知设置
+              </button>
+              <button class="menu-item menu-admin-only" type="button" data-menu="preferences">
+                <span class="menu-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 3.5 13.7 6a6.9 6.9 0 0 1 2 .8L18.6 6l1.9 3.2-2 1.8a7 7 0 0 1 0 2l2 1.8L18.6 18l-2.9-.8a6.9 6.9 0 0 1-2 .8L12 20.5 10.3 18a6.9 6.9 0 0 1-2-.8l-2.9.8-1.9-3.2 2-1.8a7 7 0 0 1 0-2l-2-1.8L5.4 6l2.9.8a6.9 6.9 0 0 1 2-.8L12 3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                    <circle cx="12" cy="12" r="2.8" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </span>
+                偏好设置
+              </button>
+            </nav>
+          </aside>
+
+          <div class="content-stack">
+            <section class="panel info-panel" aria-label="个人资料">
+              <div class="section-head">
+                <h2>个人资料</h2>
+                <p>完善你的个人资料，让更多读者认识你。</p>
+              </div>
+
+              <div class="avatar-edit-row">
+                <img
+                  class="edit-avatar"
+                  src="https://images.unsplash.com/photo-1528892952291-009c663ce843?auto=format&fit=crop&w=240&q=80"
+                  alt="当前头像"
+                />
+                <input id="avatar-upload-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden />
+                <button class="outline-btn" type="button" id="change-avatar-btn">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 17V7M7 12l5-5 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M5 19h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                  </svg>
+                  更换头像
+                </button>
+              </div>
+              <p class="avatar-tip">支持 JPG、PNG 格式，建议尺寸 200x200px。</p>
+              <p class="avatar-object-key" id="avatar-object-key"></p>
+
+              <form class="profile-form" id="profile-form" action="#" novalidate>
+                <div class="profile-form-grid">
+                  <label class="field-group" for="profile-username">
+                    <span class="field-title">用户名 <span class="field-required" aria-hidden="true">*</span></span>
+                    <input id="profile-username" type="text" value="zhangxiaoming" required />
+                  </label>
+                  <label class="field-group" for="profile-nickname">
+                    昵称
+                    <input id="profile-nickname" type="text" value="TechVibe" />
+                  </label>
+                  <label class="field-group" for="profile-email">
+                    <span class="field-title">邮箱 <span class="field-required" aria-hidden="true">*</span></span>
+                    <input id="profile-email" type="email" value="zhangxiaoming@example.com" required />
+                  </label>
+                  <label class="field-group" for="profile-mobile">
+                    手机号
+                    <input id="profile-mobile" type="text" value="138****5678" />
+                  </label>
+                </div>
+
+                <label class="field-group field-wide" for="profile-bio">
+                  个人简介
+                  <textarea id="profile-bio" maxlength="500">前端开发工程师，热爱 React 与工程化，喜欢分享实战经验。</textarea>
+                </label>
+                <p class="char-counter" id="bio-counter">0/500字</p>
+
+                <div class="social-block">
+                  <h3>社交账号</h3>
+                  <label class="social-row" for="social-github">
+                    <span class="social-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M9 19c-4 1.2-4-2-5.5-2.5M14.5 21v-3a2.6 2.6 0 0 0-.75-2c2.5-.3 5.25-1.2 5.25-5.5A4.2 4.2 0 0 0 18 7.8 3.9 3.9 0 0 0 17.9 5s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.1 4.7 5 5 5 5a3.9 3.9 0 0 0-.1 2.8A4.2 4.2 0 0 0 4 10.5c0 4.3 2.75 5.2 5.25 5.5a2.6 2.6 0 0 0-.75 2v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                    <input id="social-github" type="text" value="github.com/zhangxiaoming" />
+                  </label>
+                  <label class="social-row" for="social-twitter">
+                    <span class="social-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M22 5.8a7.7 7.7 0 0 1-2.2.6 3.8 3.8 0 0 0 1.7-2.1 7.7 7.7 0 0 1-2.5 1A3.8 3.8 0 0 0 12.5 8a10.8 10.8 0 0 1-7.8-4 3.8 3.8 0 0 0 1.2 5 3.7 3.7 0 0 1-1.7-.5v.1a3.8 3.8 0 0 0 3 3.7 3.8 3.8 0 0 1-1.7.1 3.8 3.8 0 0 0 3.5 2.6A7.8 7.8 0 0 1 3 17a10.9 10.9 0 0 0 5.9 1.7c7.1 0 11-5.9 11-11v-.5A7.7 7.7 0 0 0 22 5.8Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                    <input id="social-twitter" type="text" value="@zhangxiaoming" />
+                  </label>
+                  <label class="social-row" for="social-site">
+                    <span class="social-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8" />
+                        <path d="M4 12h16M12 4a12.5 12.5 0 0 1 3 8 12.5 12.5 0 0 1-3 8 12.5 12.5 0 0 1-3-8 12.5 12.5 0 0 1 3-8Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                    <input id="social-site" type="text" value="zhangxiaoming.dev" />
+                  </label>
+                </div>
+              </form>
+            </section>
+
+            <section class="panel article-panel" aria-label="我的文章">
+              <h2>我的文章</h2>
+
+              <div class="article-list">
+              </div>
+
+              <div class="more-wrap">
+                <button class="outline-btn" type="button">
+                  查看更多
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./aliyun-storage.js"></script>
+    <script src="./site-api.js"></script>
+    <script src="./site-session.js"></script>
+    <script src="./nav-road-car.js"></script>
+    <script type="module" src="./profile.js"></script>
+    <script type="module" src="./article-nav.js"></script>
+  </body>
+</html>

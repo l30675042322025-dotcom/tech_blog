@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>笔落客 - 文章详情</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./article-detail.css" />
+    <link rel="stylesheet" href="./site-session.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="./index.html" aria-label="笔落客首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M8.5 8 5 12l3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="m15.5 8 3.5 4-3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="m13.5 6-3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span class="brand-text">笔落客</span>
+        </a>
+
+        <nav class="site-nav" aria-label="主导航">
+          <svg class="nav-road-svg" viewBox="0 0 600 50" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="navRoadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#e8edf5"/>
+                <stop offset="50%" stop-color="#dde4ee"/>
+                <stop offset="100%" stop-color="#e8edf5"/>
+              </linearGradient>
+            </defs>
+            <path class="nav-road-path" d="M0 35 Q 60 15, 120 35 Q 180 55, 240 35 Q 300 15, 360 35 Q 420 55, 480 35 Q 540 15, 600 35" fill="none" stroke="url(#navRoadGradient)" stroke-width="16" stroke-linecap="round"/>
+            <path class="nav-road-line" d="M0 35 Q 60 15, 120 35 Q 180 55, 240 35 Q 300 15, 360 35 Q 420 55, 480 35 Q 540 15, 600 35" fill="none" stroke="#b8c5d6" stroke-width="2" stroke-dasharray="6 6" stroke-linecap="round"/>
+          </svg>
+          
+          <a class="nav-item" href="./index.html" data-nav="0">首页</a>
+          <a class="nav-item" href="./category.html" data-nav="1">分类</a>
+          <a class="nav-item" href="./about-author.html" data-nav="2">关于作者</a>
+          <a class="nav-item nav-admin-link" href="./my-articles.html" data-nav="3" hidden>我的文章</a>
+          <a class="nav-item nav-admin-essay-link" href="./my-essays.html" data-nav="4" hidden>我的随笔</a>
+          
+          <div class="nav-road-car" id="navRoadCar">
+            <img src="https://cdn-icons-png.flaticon.com/512/3774/3774278.png" alt="小汽车" />
+          </div>
+        </nav>
+
+        <div class="auth-actions" data-enable-admin-publish="true">
+          <a class="link-login" href="./auth.html?tab=login">登录</a>
+          <a class="btn-register" href="./auth.html?tab=register">注册</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="article-page">
+      <div class="container">
+        <div class="page-top-bar">
+          <button type="button" class="back-btn" id="back-btn" aria-label="返回上一页">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>返回</span>
+          </button>
+          <nav class="breadcrumb" aria-label="面包屑">
+            <a href="./index.html">首页</a>
+            <span id="breadcrumb-home-category-sep">/</span>
+            <a id="breadcrumb-category-link" href="./category.html">分类</a>
+            <span id="breadcrumb-category-title-sep">/</span>
+            <span id="breadcrumb-title" aria-current="page">文章详情</span>
+          </nav>
+        </div>
+
+        <div class="article-layout">
+          <article class="panel article-main">
+            <header class="article-header">
+              <h1>文章加载中...</h1>
+              <div class="meta-line">
+                <span class="meta-item meta-author">
+                  <img
+                    src="https://images.unsplash.com/photo-1528892952291-009c663ce843?auto=format&fit=crop&w=100&q=80"
+                    alt="作者头像"
+                  />
+                  作者
+                </span>
+                <span class="meta-item">--</span>
+                <span class="meta-item">0 阅读</span>
+                <span class="meta-item">未分类</span>
+                <span class="meta-item">无标签</span>
+              </div>
+            </header>
+
+            <div class="lead-wrap">
+              <p class="lead">正在加载文章摘要...</p>
+              <span id="lead-ai-badge" class="ai-summary-badge" hidden>AI 生成摘要</span>
+            </div>
+
+            <section id="article-content" class="article-content" aria-label="文章正文"></section>
+
+            <div class="tag-strip" aria-label="文章标签">
+              <span>标签：</span>
+            </div>
+
+            <div class="post-actions" aria-label="文章操作">
+              <div class="action-group">
+                <button type="button" class="require-login-action article-like-action" data-action="点赞">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 20s-7-4.2-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.8-7 10-7 10Z" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                  点赞 (0)
+                </button>
+                <button type="button" class="require-login-action article-favorite-action" data-action="收藏">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M6 4h12a2 2 0 0 1 2 2v14l-4-3-4 3-4-3-4 3V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                  </svg>
+                  收藏
+                </button>
+                <button type="button">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M14 4h6v6M10 14 20 4M20 13v6h-6M4 20l10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  分享
+                </button>
+              </div>
+            </div>
+
+            <section class="comments-block" id="comments" aria-label="评论区">
+              <h2>评论 (0)</h2>
+
+              <form class="comment-editor" action="#" novalidate>
+                <textarea rows="4" placeholder="写下你的想法..."></textarea>
+                <div class="editor-footer">
+                  <div class="editor-icons" aria-hidden="true">
+                    <span>Aa</span>
+                    <span>@</span>
+                    <span>#</span>
+                  </div>
+                  <button type="submit" class="require-login-action" data-action="发表评论">发布评论</button>
+                </div>
+              </form>
+
+              <div class="comment-list">
+                <article class="comment-item">
+                  <p>暂无评论，欢迎抢沙发。</p>
+                </article>
+              </div>
+            </section>
+          </article>
+
+          <aside class="article-sidebar">
+            <div class="sticky-stack">
+              <section class="panel toc-panel" aria-label="文章目录">
+                <h2>文章目录</h2>
+                <nav id="toc-list" class="toc-list"></nav>
+              </section>
+
+              <section class="panel related-panel" aria-label="相关推荐">
+                <h2>相关推荐</h2>
+                <a href="./category.html" class="related-item">
+                  <img src="https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=320&q=80" alt="更多文章" />
+                  <span>
+                    查看更多同分类文章
+                    <small>实时加载</small>
+                  </span>
+                </a>
+              </section>
+
+              <section class="panel sidebar-author" aria-label="作者卡片">
+                <img src="https://images.unsplash.com/photo-1528892952291-009c663ce843?auto=format&fit=crop&w=200&q=80" alt="作者头像" />
+                <h3>作者</h3>
+                <p>作者信息加载中...</p>
+                <div class="author-stats">
+                  <div>
+                    <strong>0</strong>
+                    <span>文章</span>
+                  </div>
+                  <div>
+                    <strong>--</strong>
+                    <span>关注</span>
+                  </div>
+                  <div>
+                    <strong>0</strong>
+                    <span>阅读</span>
+                  </div>
+                </div>
+                <button type="button">关于作者</button>
+              </section>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2026 笔落客 | 保留所有权利</p>
+      </div>
+    </footer>
+
+    <script src="./aliyun-storage.js"></script>
+    <script src="./site-api.js"></script>
+    <script src="./site-session.js"></script>
+    <script src="./nav-road-car.js"></script>
+    <script type="module" src="./article-detail.js"></script>
+  </body>
+</html>

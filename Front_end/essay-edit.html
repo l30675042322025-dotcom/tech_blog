@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>笔落客 - 发布随笔</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./site-session.css" />
+    <link rel="stylesheet" href="./essay-edit.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="./index.html" aria-label="笔落客首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M8.5 8 5 12l3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="m15.5 8 3.5 4-3.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="m13.5 6-3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span class="brand-text">笔落客</span>
+        </a>
+
+        <nav class="site-nav" aria-label="主导航">
+          <svg class="nav-road-svg" viewBox="0 0 600 50" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="navRoadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#e8edf5"/>
+                <stop offset="50%" stop-color="#dde4ee"/>
+                <stop offset="100%" stop-color="#e8edf5"/>
+              </linearGradient>
+            </defs>
+            <path class="nav-road-path" d="M0 35 Q 60 15, 120 35 Q 180 55, 240 35 Q 300 15, 360 35 Q 420 55, 480 35 Q 540 15, 600 35" fill="none" stroke="url(#navRoadGradient)" stroke-width="16" stroke-linecap="round"/>
+            <path class="nav-road-line" d="M0 35 Q 60 15, 120 35 Q 180 55, 240 35 Q 300 15, 360 35 Q 420 55, 480 35 Q 540 15, 600 35" fill="none" stroke="#b8c5d6" stroke-width="2" stroke-dasharray="6 6" stroke-linecap="round"/>
+          </svg>
+          
+          <a class="nav-item" href="./index.html" data-nav="0">首页</a>
+          <a class="nav-item" href="./category.html" data-nav="1">分类</a>
+          <a class="nav-item" href="./about-author.html" data-nav="2">关于作者</a>
+          <a class="nav-item nav-admin-link" href="./my-articles.html" data-nav="3" hidden>我的文章</a>
+          <a class="nav-item nav-admin-essay-link" href="./my-essays.html" data-nav="4" hidden>我的随笔</a>
+          
+          <div class="nav-road-car" id="navRoadCar">
+            <img src="https://cdn-icons-png.flaticon.com/512/3774/3774278.png" alt="小汽车" />
+          </div>
+        </nav>
+
+        <div class="auth-actions" data-enable-admin-publish="true">
+          <a class="link-login" href="./auth.html?tab=login">登录</a>
+          <a class="btn-register" href="./auth.html?tab=register">注册</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="essay-page">
+      <div class="container">
+        <section class="essay-top">
+          <h1 id="essay-mode-text">发布随笔</h1>
+          <div class="essay-actions">
+            <div class="hidden-toggle">
+              <label class="toggle-switch">
+                <input type="checkbox" id="essay-hidden-toggle" />
+                <span class="toggle-slider"></span>
+              </label>
+              <span class="toggle-label">隐藏随笔</span>
+            </div>
+            <button id="essay-back-btn" type="button" class="ghost-btn">返回首页</button>
+            <button id="essay-save-btn" type="button" class="primary-btn">发布随笔</button>
+          </div>
+        </section>
+
+        <section class="essay-card">
+          <label for="essay-title-input">随笔标题</label>
+          <input id="essay-title-input" type="text" placeholder="请输入随笔标题" maxlength="200" />
+          <label class="sub-label" for="essay-location-input">发布定位</label>
+          <div class="location-row">
+            <input
+              id="essay-location-input"
+              type="text"
+              placeholder="点击右侧按钮获取当前位置"
+              maxlength="120"
+              readonly
+            />
+            <button id="essay-locate-btn" type="button" class="ghost-btn location-btn">获取当前位置</button>
+          </div>
+          <div class="essay-cover-section">
+            <label>封面图片</label>
+            <label class="essay-cover-uploader" for="essay-cover-input">
+              <input id="essay-cover-input" type="file" accept="image/png,image/jpeg,image/webp" hidden />
+              <img id="essay-cover-preview" class="essay-cover-preview" alt="封面预览" hidden />
+              <svg class="essay-cover-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8" />
+                <path d="m8 14 2.5-2.5L14 15l2.5-2.5L19 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <strong id="essay-cover-text">上传封面图</strong>
+              <small>建议尺寸：1200 x 630 像素</small>
+            </label>
+          </div>
+          <p class="field-tip">正文支持粘贴图片。粘贴后会自动上传到阿里云并插入到光标位置。</p>
+        </section>
+
+        <section class="essay-card">
+          <label for="essay-editor">随笔内容</label>
+          <div
+            id="essay-editor"
+            class="essay-editor"
+            contenteditable="true"
+            spellcheck="false"
+            aria-label="随笔正文编辑区"
+          >
+            <p><br /></p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <input id="essay-image-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden />
+    <div id="essay-toast" class="essay-toast" hidden></div>
+
+    <script src="./aliyun-storage.js"></script>
+    <script src="./site-api.js"></script>
+    <script src="./site-session.js"></script>
+    <script src="./nav-road-car.js"></script>
+    <script type="module" src="./essay-edit.js"></script>
+  </body>
+</html>
+
